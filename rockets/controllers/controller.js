@@ -24,7 +24,7 @@ function createRocket1() {
         }
         let btnAcc = document.createElement('button');
         btnAcc.textContent = ('Acelerar cohete 1');
-        btnAcc.className = ('.acelerar');
+        btnAcc.className = ('.acelerar btn btn-info m-2');
         rocketsPlace.appendChild(btnAcc);
         btnAcc.onclick = (e) => {
             e.preventDefault;
@@ -32,7 +32,7 @@ function createRocket1() {
         };
         let btnFren = document.createElement('button');
         btnFren.textContent = ('Frenar cohete 1');
-        btnFren.className = ('.frenar');
+        btnFren.className = ('.frenar btn btn-info m-2');
         rocketsPlace.appendChild(btnFren);
         btnFren.onclick = (e) => {
             e.preventDefault;
@@ -57,7 +57,7 @@ function createRocket2() {
         }
         let btnAcc = document.createElement('button');
         btnAcc.textContent = ('Acelerar cohete 2');
-        btnAcc.className = ('.acelerar');
+        btnAcc.className = ('.acelerar btn btn-info m-2');
         rocketsPlace.appendChild(btnAcc);
         btnAcc.onclick = (e) => {
             e.preventDefault;
@@ -65,7 +65,7 @@ function createRocket2() {
         };
         let btnFren = document.createElement('button');
         btnFren.textContent = ('Frenar cohete 2');
-        btnFren.className = ('.frenar');
+        btnFren.className = ('.frenar btn btn-info m-2');
         rocketsPlace.appendChild(btnFren);
         btnFren.onclick = (e) => {
             e.preventDefault;
@@ -96,7 +96,7 @@ function boostersNum() {
     //add button for create rocket
     let btn = document.createElement('button');
     btn.textContent = ('Crear');
-    btn.className = ('btn btn-info');
+    btn.className = ('btn btn-info m-2');
     btn.type = ("button");
     btn.id = ('btn-create-boosters');
     //Create rocket onClick button function//
@@ -121,24 +121,58 @@ function boostersNum() {
             //add rocket to array
             rockets.push(rocket);
             //create button for accelerate/breake rocket
-            //accelerate function
             let index = rockets.indexOf(rocket);
+            document.getElementById("rockets").innerHTML = '<img class="rocket-img" src="../images/rocket.png" />';
+            //accelerate button and function
             let btnAcc = document.createElement('button');
             btnAcc.textContent = (`Acelerar cohete ${index}`);
-            btnAcc.className = ('.acelerar');
+            btnAcc.className = ('.acelerar btn btn-info m-2');
+            //ad code name of the rocket to id button
+            btnAcc.id = (rocket.code);
+            console.log(btnAcc.id);
             rocketsPlace.appendChild(btnAcc);
             btnAcc.onclick = (e) => {
                 e.preventDefault;
-                rocket.accelerate(boosters, copyBoosters);
+                //recorremos array de rocket para encontrar el que queremos trastear
+                for (let i = 0; i < rockets.length; i++) {
+                    if (rockets[i].code == btnAcc.id) {
+                        boosters = rockets[i].boosters;
+                        let propulsor;
+                        let power = [];
+                        for (let x = 0; x < boosters.length; x++) {
+                            propulsor = rockets[i].boosters[x].power;
+                            power.push(propulsor);
+                        }
+                        console.log(boosters);
+                        console.log(power);
+                        rocket.accelerate(power, power);
+                    }
+                }
             };
             //breake function
             let btnFren = document.createElement('button');
-            btnFren.textContent = (`Acelerar cohete ${index}`);
-            btnFren.className = ('.frenar');
+            btnFren.textContent = (`Frenar cohete ${index}`);
+            btnFren.className = ('.frenar btn btn-info m-2');
+            //ad code name of the rocket to id button
+            btnFren.id = (rocket.code);
             rocketsPlace.appendChild(btnFren);
             btnFren.onclick = (e) => {
                 e.preventDefault;
-                rocket.backAway(boosters);
+                //recorremos array de rocket para encontrar el que queremos trastear
+                for (let i = 0; i < rockets.length; i++) {
+                    if (rockets[i].code == btnFren.id) {
+                        boosters = rockets[i].boosters;
+                        let propulsor;
+                        let power = [];
+                        for (let x = 0; x < boosters.length; x++) {
+                            propulsor = rockets[i].boosters[x].power;
+                            power.push(propulsor);
+                        }
+                        console.log(boosters);
+                        console.log(power);
+                        rocket.backAway(power);
+                    }
+                }
             };
             //show form
             ((_b = document.getElementById('rocket-btn')) === null || _b === void 0 ? void 0 : _b.classList.remove('d-none'));

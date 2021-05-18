@@ -5,34 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rockets</title>
+   
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+     <!--CSS-->
+     <link rel="stylesheet" href="../styles/styles.css">
 </head>
-<body>
-    <div class = "container">
-        <div class="first-rockets">
-            <button id="rocket1" class="btn btn-info">Crear el primer cohete</button>
-            <button id="rocket2" class="btn btn-info">Crear el segundo cohete</button>
-        </div>
-        <form id='form-create-rocket'>    
+
+<body class = "bg-animated">
+    <div >
+        <div class = "container mt-3">
+            <h1>ROCKETS</h1>
             <div>
-                <label for="rocket-code">Añade un código para tu cohete</label>
-                <input type="text" name="rocket-code" id="rocket-code">
+                <!--rockets yet made-->
+                <div class="first-rockets my-4">
+                    <h3>Crea tus primeros cohetes!</h3>
+                    <button id="rocket1" class="btn btn-info">Crear el primer cohete</button>
+                    <button id="rocket2" class="btn btn-info">Crear el segundo cohete</button>
+                </div>
             </div>
-            <div id ='numBoosters'>
-                <label for="booster">Cuántos propulsores le ponemos?</label>
-                <input type="number" name="booster" id="boosters">
-            </div>
-            <button type="button" class="btn btn-info" id ="rocket-btn">Añadir propulsores</button>
-        </form> 
-       
-    </div>
+            <!--rocket form-->
+            <div class= "rocket-form">
+                <h3>Crea tus propios cohetes!</h3>
+                <form id='form-create-rocket'>    
+                    <div>
+                        <label class="mr-3" for="rocket-code">Añade un código para tu cohete</label>
+                        <input type="text" name="rocket-code" id="rocket-code">
+                    </div>
+                    <div id ='numBoosters'>
+                        <label class="mr-1" for="booster">Cuántos propulsores le ponemos?</label>
+                        <input type="number" name="booster" id="boosters">
+                    </div>
+                    <button type="button" class="btn btn-info" id ="rocket-btn">Añadir propulsores</button>
+                </form> 
+            </div>    
+        </div>
 
-   
-    <form id ="boosters-form"></form>
+    
+        <form id ="boosters-form"></form>
+        <!--Place for put rockets-->
+        <div id="rockets">
+            
+        </div>
+        
+        <!--animation-->
+        <div class="stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
 
-    <div id="rockets"></div>
-
+    </div>    
     <!--Scripts-->
     <script src="../models/booster.js" ></script>
     <script src="../models/rocket.js" ></script>

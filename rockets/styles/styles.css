@@ -1,0 +1,126 @@
+body {
+    width: 100%;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.719);
+    
+}
+.bg-animated {
+    background-color:  rgb(8, 6, 39);
+    overflow: hidden;
+}
+h1{
+    color: rgba(201, 31, 19, 0.698);
+    text-align: center;
+    font-size: 60px;
+}
+input {
+    margin: 5px;
+}
+label {
+    margin: 5px;  
+}
+.rocket-img {
+    height: 100px;
+    
+}
+/*Animation*/
+.star {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: aliceblue;
+
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    animation: stars 3s linear infinite;
+}
+
+.star:nth-child(1){
+    width: 10px;
+    height: 10px;
+    left: 25%;
+    animation-duration: 5s;
+    animation-delay: 2s;
+    bottom: -100px;
+}
+.star:nth-child(2){
+    width: 5px;
+    height: 5px;
+    left: 90%;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    bottom: -100px;
+}
+.star:nth-child(3){
+    width: 3px;
+    height: 3px;
+    left: 75%;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    bottom: -100px;
+    background: tomato;
+}
+.star:nth-child(4){
+    width: 7px;
+    height: 7px;
+    left: 65%;
+    animation-duration: 6s;
+    animation-delay: 0;
+    
+}
+.star:nth-child(5){
+    width: 5px;
+    height: 5px;
+    left: 35%;
+    animation-duration: 7s;
+    animation-delay: 5s;
+    bottom: -50px;
+}
+.star:nth-child(6){
+    width: 9px;
+    height: 9px;
+    left: 45%;
+    animation-duration: 10s;
+    animation-delay: 8s;
+    bottom: -20px;
+}
+.star:nth-child(7){
+    width: 9px;
+    height: 9px;
+    left: 55%;
+    animation-duration: 7s;
+    animation-delay: 3s;
+    bottom: -20px;
+    background: rgb(114, 17, 17);
+}
+.star:nth-child(8){
+    width: 5px;
+    height: 5px;
+    left: 80%;
+    animation-duration: 5s;
+    animation-delay: 5s;
+    bottom: -20px;
+}
+.star:nth-child(9){
+    width: 7px;
+    height: 7px;
+    left: 39%;
+    animation-duration: 6s;
+    animation-delay: 3s;
+    bottom: -20px;
+    background: rgb(129, 39, 214);
+}
+
+@keyframes stars{
+    0%{
+        top: 0;
+        opacity: 0;
+
+    }50%{
+        opacity: .5;
+    }100%{
+        top: 100vh;
+        opacity: 0;
+    }
+}
