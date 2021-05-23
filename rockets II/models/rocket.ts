@@ -10,8 +10,8 @@ class Rocket {
         this.boosters.push(booster);
     }
     //back away function
-    backAway( boosters: number[]){
-        let index = rockets.indexOf(rocket);
+    backAway( boosters: number[], x: number){
+        //let index = rockets.indexOf(rocket);
         let conPower: boolean = false;
         
         for(let i=0; i<boosters.length;i++){
@@ -22,7 +22,7 @@ class Rocket {
             }else{
                 this.boosters[i].power -= 10;
                 conPower = true;
-                document.getElementById(`rocket-img${index}`)?.classList.add('is-on');
+                document.getElementById(`rocket-img${x}`)?.classList.add('is-on');
             }
             /* Object.entries(booster).forEach(([key, value]) => {
                 if(value == 0){
@@ -36,11 +36,11 @@ class Rocket {
 
         if(!conPower){
             alert('Sin poténcia!');
-            document.getElementById(`rocket-img${index}`)?.classList.remove('is-on');
+            document.getElementById(`rocket-img${x}`)?.classList.remove('is-on');
         }    
     }
     
-    accelerate(boosters: number[]) {
+    accelerate(boosters: number[],x: number) {
         //compare items in array for max power//
         let sinPower: boolean = false;
         let index = rockets.indexOf(rocket);
@@ -52,7 +52,7 @@ class Rocket {
             }else{
                 this.boosters[i].power += 10;
                 sinPower = true;
-                document.getElementById(`rocket-img${index}`)?.classList.add('is-on');
+                document.getElementById(`rocket-img${x}`)?.classList.add('is-on');
             }
         }
         if(!sinPower)alert('Poténcia al máximo!');

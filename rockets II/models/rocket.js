@@ -9,9 +9,9 @@ var Rocket = /** @class */ (function () {
         this.boosters.push(booster);
     };
     //back away function
-    Rocket.prototype.backAway = function (boosters) {
+    Rocket.prototype.backAway = function (boosters, x) {
         var _a, _b;
-        var index = rockets.indexOf(rocket);
+        //let index = rockets.indexOf(rocket);
         var conPower = false;
         for (var i = 0; i < boosters.length; i++) {
             var booster_1 = this.boosters[i].power;
@@ -21,7 +21,7 @@ var Rocket = /** @class */ (function () {
             else {
                 this.boosters[i].power -= 10;
                 conPower = true;
-                (_a = document.getElementById("rocket-img" + index)) === null || _a === void 0 ? void 0 : _a.classList.add('is-on');
+                (_a = document.getElementById("rocket-img" + x)) === null || _a === void 0 ? void 0 : _a.classList.add('is-on');
             }
             /* Object.entries(booster).forEach(([key, value]) => {
                 if(value == 0){
@@ -34,10 +34,10 @@ var Rocket = /** @class */ (function () {
         }
         if (!conPower) {
             alert('Sin poténcia!');
-            (_b = document.getElementById("rocket-img" + index)) === null || _b === void 0 ? void 0 : _b.classList.remove('is-on');
+            (_b = document.getElementById("rocket-img" + x)) === null || _b === void 0 ? void 0 : _b.classList.remove('is-on');
         }
     };
-    Rocket.prototype.accelerate = function (boosters) {
+    Rocket.prototype.accelerate = function (boosters, x) {
         var _a;
         //compare items in array for max power//
         var sinPower = false;
@@ -50,7 +50,7 @@ var Rocket = /** @class */ (function () {
             else {
                 this.boosters[i].power += 10;
                 sinPower = true;
-                (_a = document.getElementById("rocket-img" + index)) === null || _a === void 0 ? void 0 : _a.classList.add('is-on');
+                (_a = document.getElementById("rocket-img" + x)) === null || _a === void 0 ? void 0 : _a.classList.add('is-on');
             }
         }
         if (!sinPower)

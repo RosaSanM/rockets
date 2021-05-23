@@ -5,6 +5,35 @@ var rockets = new Array();
 var booster;
 //let copyBoosters: number[] = new Array();
 //*********************INSTANCE CLASSES*****************************//
+//Default rockets
+function createRocket1() {
+    var code = '32WESSDS';
+    var boosters = [10, 30, 80];
+    rocket = new Rocket(code);
+    for (var i = 0; i < boosters.length; i++) {
+        var power = boosters[i];
+        booster = new Booster(power, power);
+        rocket.addBooster(booster);
+    }
+    //add rocket to array
+    rockets.push(rocket);
+    //create buttons for acc/breake functions
+    createButtonsPlay(rocket);
+}
+function createRocket2() {
+    var code = 'LDSFJA32';
+    var boosters = [30, 40, 50, 50, 50, 30, 10];
+    rocket = new Rocket(code);
+    for (var i = 0; i < boosters.length; i++) {
+        var power = boosters[i];
+        booster = new Booster(power, power);
+        rocket.addBooster(booster);
+    }
+    //add rocket to array
+    rockets.push(rocket);
+    //create buttons for acc/breake functions
+    createButtonsPlay(rocket);
+}
 /*************************USER ROCKETS******************************************/
 //Create Rocket
 function createRocket() {
@@ -120,9 +149,10 @@ function createButtonsPlay(rocket) {
     btnAcc.addEventListener('click', function (e) {
         e.preventDefault;
         for (var index_1 in rockets) {
-            if (btnAcc.name == "acc " + rockets[index_1].code) {
-                var propulsor = rockets[index_1].boosters;
-                return rocket.accelerate(propulsor);
+            var i = parseInt(index_1);
+            if (btnAcc.name == "acc " + rockets[i].code) {
+                var propulsor = rockets[i].boosters;
+                return rocket.accelerate(propulsor, i);
                 ;
             }
         }
@@ -145,9 +175,10 @@ function createButtonsPlay(rocket) {
     btnFren.addEventListener('click', function (e) {
         e.preventDefault;
         for (var index_2 in rockets) {
+            var i = parseInt(index_2);
             if (btnFren.name == "fren " + rockets[index_2].code) {
                 var propulsor = rockets[index_2].boosters;
-                return rocket.backAway(propulsor);
+                return rocket.backAway(propulsor, i);
             }
         }
     });
@@ -167,6 +198,15 @@ function createButtonsPlay(rocket) {
     (_e = document.getElementById('form-create-rocket')) === null || _e === void 0 ? void 0 : _e.reset();
 }
 /*******************LISTENERS*********************/
+//Create default rockets callings
+var rocket1 = document.getElementById('rocket1').addEventListener('click', function (e) {
+    e.preventDefault;
+    createRocket1();
+});
+var rocket2 = document.getElementById('rocket2').addEventListener('click', function (e) {
+    e.preventDefault;
+    createRocket2();
+});
 //Get number of boosters for create a new rocket// 
 var rocketBtn = document.getElementById('rocket-btn');
 rocketBtn.addEventListener('click', function (e) {

@@ -5,7 +5,39 @@ let booster: Booster;
 
 //let copyBoosters: number[] = new Array();
 //*********************INSTANCE CLASSES*****************************//
-
+//Default rockets
+function createRocket1(){
+    let code: string = '32WESSDS';
+    let boosters: number[] = [10, 30, 80];
+    
+    rocket = new Rocket(code); 
+    for(let i =0; i< boosters.length;i++){
+        let power = boosters[i];
+        booster = new Booster(power, power);
+        rocket.addBooster(booster);
+    }
+     //add rocket to array
+    rockets.push(rocket);
+    //create buttons for acc/breake functions
+    createButtonsPlay(rocket);
+       
+}
+function createRocket2(){
+    let code: string = 'LDSFJA32';
+    let boosters: number[] = [30, 40, 50, 50, 50, 30, 10];
+    
+    rocket = new Rocket(code); 
+    for(let i =0; i< boosters.length;i++){
+        let power = boosters[i];
+        booster = new Booster(power, power);
+        rocket.addBooster(booster);
+    }
+    //add rocket to array
+    rockets.push(rocket);
+    //create buttons for acc/breake functions
+    createButtonsPlay(rocket);
+       
+}
 /*************************USER ROCKETS******************************************/
 //Create Rocket
 function createRocket() {
@@ -131,10 +163,11 @@ function createButtonsPlay(rocket:Rocket){
     btnAcc.addEventListener('click', (e)=>{
         e.preventDefault;
         for(let index in rockets){
-            if(btnAcc.name == `acc ${rockets[index].code}`){
-                let propulsor: number[] = rockets[index].boosters;
+            let i = parseInt(index);
+            if(btnAcc.name == `acc ${rockets[i].code}`){
+                let propulsor: number[] = rockets[i].boosters;
                
-                return  rocket.accelerate(propulsor);;
+                return  rocket.accelerate(propulsor,i);;
             }
         }
        
@@ -157,9 +190,10 @@ function createButtonsPlay(rocket:Rocket){
     btnFren.addEventListener('click',(e)=>{
         e.preventDefault;
         for(let index in rockets){
+            let i = parseInt(index);
             if(btnFren.name == `fren ${rockets[index].code}`){
                 let propulsor: number[] = rockets[index].boosters;
-                return rocket.backAway(propulsor);
+                return rocket.backAway(propulsor,i);
             }
         }
     });
@@ -182,6 +216,15 @@ function createButtonsPlay(rocket:Rocket){
 }
 
 /*******************LISTENERS*********************/
+//Create default rockets callings
+let rocket1 = (document.getElementById('rocket1') as HTMLFormElement).addEventListener('click', (e) => {
+    e.preventDefault;
+    createRocket1();
+});
+let rocket2 = (document.getElementById('rocket2') as HTMLFormElement).addEventListener('click', (e) => {
+    e.preventDefault;
+    createRocket2();
+});
 
 //Get number of boosters for create a new rocket// 
 let rocketBtn = (document.getElementById('rocket-btn') as HTMLFormElement)!;
