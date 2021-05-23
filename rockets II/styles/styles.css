@@ -1,17 +1,13 @@
 body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     color: rgba(255, 255, 255, 0.719);
+    overflow: hidden;
     
 }
 .bg-animated {
     background-color:  rgb(8, 6, 39);
     overflow: hidden;
-}
-h1{
-    color: rgba(201, 31, 19, 0.698);
-    text-align: center;
-    font-size: 60px;
 }
 input {
     margin: 5px;
@@ -23,6 +19,12 @@ label {
     height: 100px;
     
 }
+.rocket-img.is-on{
+	position: relative;
+	animation: animate 0.2s ease infinite;
+}
+
+
 /*Animation*/
 .star {
     width: 5px;
@@ -123,4 +125,12 @@ label {
         top: 100vh;
         opacity: 0;
     }
+}
+@keyframes animate{
+	0%{
+		transform: translateY(-2px);
+	}
+	50%{
+		transform: translateY(2px);
+	}
 }
