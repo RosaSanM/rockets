@@ -20,7 +20,7 @@ function createRocket1(){
     rockets.push(rocket);
     //create buttons for acc/breake functions
     createButtonsPlay(rocket);
-       
+    (document.getElementById('rocket1')as HTMLFormElement).classList.add('d-none');   
 }
 function createRocket2(){
     let code: string = 'LDSFJA32';
@@ -36,7 +36,7 @@ function createRocket2(){
     rockets.push(rocket);
     //create buttons for acc/breake functions
     createButtonsPlay(rocket);
-       
+    (document.getElementById('rocket2')as HTMLFormElement).classList.add('d-none');   
 }
 /*************************USER ROCKETS******************************************/
 //Create Rocket
@@ -148,9 +148,10 @@ function createBoostsInput() {
 function createButtonsPlay(rocket:Rocket){
    
     let index = rockets.indexOf(rocket);
-    let rocketsPlace = (document.getElementById('rockets') as HTMLElement);
+    let rocketsContainer = (document.getElementById('rockets') as HTMLElement);
+    let rocketsPlace = document.createElement('div');
+    rocketsContainer.appendChild(rocketsPlace);
     
-  
     //accelerate button and function
     let btnAcc = document.createElement('button');
     btnAcc.textContent = (`+`);
@@ -196,10 +197,19 @@ function createButtonsPlay(rocket:Rocket){
                 return rocket.backAway(propulsor,i);
             }
         }
+        
+
     });
-    
+    //p para power
+    let p = document.createElement('p');
+    p.id = (`${rocket.code}`);
+    p.className = ('.div-power');
+    rocketsPlace.appendChild(p);
+
     //show form for create new rocket
     (document.getElementById('rocket-btn')?.classList.remove('d-none'));
+
+
     //remove inputs
     let numBoosters: number = (document.getElementById('boosters') as HTMLFormElement).value;
     for (let i = 0; i < numBoosters; i++) {
@@ -213,6 +223,20 @@ function createButtonsPlay(rocket:Rocket){
     btn?.parentNode?.removeChild(btn);
     //reset form
     (document.getElementById('form-create-rocket') as HTMLFormElement)?.reset();
+
+    btnFren.addEventListener('click', (e)=> {
+        e.preventDefault;
+        for(let index in rockets){
+            let i = parseInt(index);
+            if(btnFren.name == `fren ${rockets[index].code}`){
+               rockets[index].code
+            }
+        }
+    })
+
+
+
+    
 }
 
 /*******************LISTENERS*********************/

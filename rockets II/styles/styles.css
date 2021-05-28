@@ -1,8 +1,12 @@
+* {
+    font-family: 'Arcade Rounded', arial;
+}
+
 body {
     width: 100vw;
-    height: 100vh;
+    /*height: 100vh;*/
     color: rgba(255, 255, 255, 0.719);
-    overflow: hidden;
+   
     
 }
 .bg-animated {
@@ -15,15 +19,24 @@ input {
 label {
     margin: 5px;  
 }
+
+#rockets {
+    position : relative;
+    display: flex;
+}
 .rocket-img {
     height: 100px;
-    
 }
 .rocket-img.is-on{
-	position: relative;
+	/*position: relative;*/
 	animation: animate 0.2s ease infinite;
 }
 
+p {
+    position: absolute;
+    color: tomato;
+    
+}
 
 /*Animation*/
 .star {

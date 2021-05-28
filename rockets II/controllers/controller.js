@@ -19,6 +19,7 @@ function createRocket1() {
     rockets.push(rocket);
     //create buttons for acc/breake functions
     createButtonsPlay(rocket);
+    document.getElementById('rocket1').classList.add('d-none');
 }
 function createRocket2() {
     var code = 'LDSFJA32';
@@ -33,6 +34,7 @@ function createRocket2() {
     rockets.push(rocket);
     //create buttons for acc/breake functions
     createButtonsPlay(rocket);
+    document.getElementById('rocket2').classList.add('d-none');
 }
 /*************************USER ROCKETS******************************************/
 //Create Rocket
@@ -136,7 +138,9 @@ function createBoostsInput() {
 function createButtonsPlay(rocket) {
     var _a, _b, _c, _d, _e;
     var index = rockets.indexOf(rocket);
-    var rocketsPlace = document.getElementById('rockets');
+    var rocketsContainer = document.getElementById('rockets');
+    var rocketsPlace = document.createElement('div');
+    rocketsContainer.appendChild(rocketsPlace);
     //accelerate button and function
     var btnAcc = document.createElement('button');
     btnAcc.textContent = ("+");
@@ -182,6 +186,11 @@ function createButtonsPlay(rocket) {
             }
         }
     });
+    //p para power
+    var p = document.createElement('p');
+    p.id = ("" + rocket.code);
+    p.className = ('.div-power');
+    rocketsPlace.appendChild(p);
     //show form for create new rocket
     ((_a = document.getElementById('rocket-btn')) === null || _a === void 0 ? void 0 : _a.classList.remove('d-none'));
     //remove inputs
@@ -196,6 +205,15 @@ function createButtonsPlay(rocket) {
     (_d = btn === null || btn === void 0 ? void 0 : btn.parentNode) === null || _d === void 0 ? void 0 : _d.removeChild(btn);
     //reset form
     (_e = document.getElementById('form-create-rocket')) === null || _e === void 0 ? void 0 : _e.reset();
+    btnFren.addEventListener('click', function (e) {
+        e.preventDefault;
+        for (var index_3 in rockets) {
+            var i = parseInt(index_3);
+            if (btnFren.name == "fren " + rockets[index_3].code) {
+                rockets[index_3].code;
+            }
+        }
+    });
 }
 /*******************LISTENERS*********************/
 //Create default rockets callings

@@ -11,51 +11,72 @@ class Rocket {
     }
     //back away function
     backAway( boosters: number[], x: number){
-        //let index = rockets.indexOf(rocket);
-        let conPower: boolean = false;
         
+        let conPower: boolean = false;
+        let div = (document.getElementById(rockets[x].code)as HTMLElement);
+
         for(let i=0; i<boosters.length;i++){
             
             let booster = this.boosters[i].power;
-            if(booster == 0){
+            if(booster <= 0){
                 console.log('sin poténcia!');  
             }else{
+               
                 this.boosters[i].power -= 10;
                 conPower = true;
                 document.getElementById(`rocket-img${x}`)?.classList.add('is-on');
+                //div.className = ('animate__animated animate__zoomInUp');
+                //div.textContent = (""+data);
             }
-            /* Object.entries(booster).forEach(([key, value]) => {
-                if(value == 0){
-                    console.log('agotado!');  
-                }else{
-                    this.boosters[i].power -= 10;
-                    conPower = true;
-                }
-            });*/
+            let arrPower = new Array();
+            
+            for(let i in boosters) {
+                
+                console.log(this.boosters[i].power);
+                arrPower.push(this.boosters[i].power);
+            }
+            div.textContent = (`${arrPower.join(' ')}`)
+             
+            
         }
 
         if(!conPower){
-            alert('Sin poténcia!');
+            div.textContent = ('Sin potencia!');
             document.getElementById(`rocket-img${x}`)?.classList.remove('is-on');
         }    
     }
     
-    accelerate(boosters: number[],x: number) {
+    accelerate(boosters: number[], x: number) {
         //compare items in array for max power//
         let sinPower: boolean = false;
         let index = rockets.indexOf(rocket);
+        let div = (document.getElementById(rockets[x].code)as HTMLElement);
+       
 
         for(let i=0; i<boosters.length;i++){
             let booster = this.boosters[i];
             if(booster.power == booster.powerCopy){
                 console.log('al máximo!');  
             }else{
-                this.boosters[i].power += 10;
+                let data = this.boosters[i].power += 10;
                 sinPower = true;
                 document.getElementById(`rocket-img${x}`)?.classList.add('is-on');
+
+                let div = (document.getElementById(rockets[x].code)as HTMLElement);
+                
+                div.textContent = (""+data);
             }
+            let arrPower = new Array();
+            
+            for(let i in boosters) {
+                
+                console.log(this.boosters[i].power);
+                arrPower.push(this.boosters[i].power);
+            }
+            div.textContent = (`${arrPower.join(' ')}`)
+            
         }
-        if(!sinPower)alert('Poténcia al máximo!');
+        if(!sinPower)div.textContent = ('Al máximo!');
     }
     
 }
