@@ -31,10 +31,12 @@ var Rocket = /** @class */ (function () {
                 arrPower.push(this.boosters[i_1].power);
             }
             div.textContent = ("" + arrPower.join(' '));
+            setTimeout(function () { div.textContent = (' '); }, 1000);
         }
         if (!conPower) {
             div.textContent = ('Sin potencia!');
             (_b = document.getElementById("rocket-img" + x)) === null || _b === void 0 ? void 0 : _b.classList.remove('is-on');
+            setTimeout(function () { div.textContent = (' '); }, 1000);
         }
     };
     Rocket.prototype.accelerate = function (boosters, x) {
@@ -61,9 +63,12 @@ var Rocket = /** @class */ (function () {
                 arrPower.push(this.boosters[i_2].power);
             }
             div.textContent = ("" + arrPower.join(' '));
+            setTimeout(function () { div.textContent = (' '); }, 1000);
         }
-        if (!sinPower)
+        if (!sinPower) {
             div.textContent = ('Al máximo!');
+            setTimeout(function () { div.textContent = (' '); }, 1000);
+        }
     };
     return Rocket;
 }());
